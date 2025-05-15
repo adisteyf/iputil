@@ -11,20 +11,19 @@ void
 get_domen (const char * domen)
 {
 	int             status;
-	struct addrinfo hints, *res, *p;
+	struct addrinfo hints, *p;
 	char            ipstr[INET6_ADDRSTRLEN];
 
 	memset(&hints,0,sizeof(hints));
 	hints.ai_family   = AF_UNSPEC;
 	hints.ai_socktype = SOCK_STREAM;
 
-	if ((status = getaddrinfo(domen,0,&hints,&res))) {
+	if ((status = getaddrinfo(domen,0,&hints,&p))) {
 		fprintf(stderr,"getaddrinfo: %s\n",gai_strerror(status));
 		exit(3);
 	}
 
 	printf("IP addrs for %s:\n\n",domen);
-	p=res;
 	for(;;) {
 		if (!p) { break; }
 		void * addr;
@@ -48,5 +47,5 @@ get_domen (const char * domen)
 		p=p->ai_next;
 	}
 
-	freeaddrinfo(res);
+	freeaddrinfo(p);
 }
