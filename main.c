@@ -11,11 +11,6 @@ OPTIONS:\n\
 #define HELP_DEF   puts(HELP_MSG);return 1
 #define ARGEQ(x) strcmp(*argv,x)==0
 
-typedef struct {
-	char * domen;
-	int    type;
-} Config;
-
 int
 main (int argc, char ** argv)
 {
