@@ -8,6 +8,9 @@
 #include <stdlib.h>
 #include <strings.h>
 
+static char * get_protocol (int);
+static char * get_socktype (int);
+
 
 static char *
 get_protocol (int num)
@@ -49,7 +52,7 @@ get_domen (const char * domen)
 	hints.ai_socktype = SOCK_STREAM;
 
 	if ((status = getaddrinfo(domen,0,&hints,&p))) {
-		fprintf(stderr,"getaddrinfo: %s\n",gai_strerror(status));
+		fprintf(stderr,"get_domen,getaddrinfo: %s\n",gai_strerror(status));
 		exit(3);
 	}
 
