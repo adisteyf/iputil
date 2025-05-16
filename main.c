@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include "domen.h"
 #include "me.h"
@@ -12,7 +13,7 @@ OPTIONS:\n\
   -h|--help        Show this message.\n\
 COMMANDS:\n\
   me               Shows your ips."
-#define HELP_DEF   puts(HELP_MSG);return 1
+#define HELP_DEF   puts(HELP_MSG);exit(1)
 #define ARGEQ(x) strcmp(*argv,x)==0
 
 int
